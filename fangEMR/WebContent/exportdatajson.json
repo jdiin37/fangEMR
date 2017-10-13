@@ -1,0 +1,7 @@
+[{"firstname":"Apple","lastname":"","productname":"IphoneX","available":true,"quantity":"0","price":"35600"},
+{"firstname":"Sumsung","lastname":"","productname":"Note 8","available":true,"quantity":"0","price":"25000"},
+{"firstname":"","lastname":"","productname":"","available":"","quantity":"","price":""},
+{"firstname":"","lastname":"","productname":"","available":"","quantity":"","price":""},
+{"firstname":"","lastname":"","productname":"","available":"","quantity":"","price":""},
+{"firstname":"","lastname":"","productname":"","available":"","quantity":"","price":""},
+{"firstname":"SONY","lastname":"","productname":"XZ","available":false,"quantity":"0","price":"15000"}]

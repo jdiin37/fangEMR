@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html> -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="device=device-width" />
+<title>EMR</title>
+<link rel="stylesheet" href="jqwidgets/styles/jqx.base.css" type="text/css" />
+<link rel="stylesheet" href="jqwidgets/styles/jqx.bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="styles/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="styles/select2.css" type="text/css" />
+<link rel="stylesheet" href="styles/select2-bootstrap.css" type="text/css" />
+<script src="scripts/jquery-1.11.1.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/EMRfunction.js"></script>
+<script src="scripts/getDataField.js"></script>
+<script src="scripts/getDataColumn.js"></script>
+
+<script type="text/javascript" src="jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxmenu.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.selection.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.columnsresize.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.filter.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.sort.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.pager.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.grouping.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxgrid.edit.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxnumberinput.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxnavbar.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxcombobox.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxwindow.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxpanel.js"></script>
+<script type="text/javascript" src="jqwidgets/jqxnavigationbar.js"></script>
+<script src="scripts/local_TW.js"></script>
+
+<style>
+.modal {
+	text-align: center;
+	padding: 0 !important;
+}
+
+.modal:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -4px;
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		getPatInfo(); //取得客戶基本資料
+
+	});
+</script>
+
+</head>
+<!-- 鎖住F5 onkeydown="return (event.keyCode != 116)" -->
+
+<body>
+	<!--LoadingModal-->
+	<div class="modal fade" tabindex="-1" role="dialog" id="LoadingModal">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">				
+				<div class="modal-body" id="alertMsg">
+					<h4 class="modal-title">Loading...</h4>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+							</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!--LoadingModal-->
+
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading clearfix">
+				<div class="panel-title pull-left panel-tool">
+					<a href="mainEMR.html">EMR</a>
+				</div>
+				<div class="pull-right">
+					<button type="button" class="btn btn-link btn-sm" id="btn_MasterPOP">口</button>
+					<button type="button" class="btn btn-link btn-sm" id="btn_MasterX">X</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="row form-group" id="block-1">
+					<div class="col-sm-12">
+						<button type="button" class="btn btn-primary" id="btn_block0"><span class="glyphicon glyphicon-user"></span></button> <span class="h4 bg-warning"
+							id="block-1-patInfo"></span>
+						<div class="pull-right">
+							<button type="button" class="btn btn-primary" id="btn_block1"><span class="glyphicon glyphicon-star"></span></button>
+							<button type="button" class="btn btn-primary" id="btn_block2"><span class="glyphicon glyphicon-star"></span></button>
+							<button type="button" class="btn btn-primary" id="btn_block3"><span class="glyphicon glyphicon-star"></span></button>
+							<button type="button" class="btn btn-primary" id="btn_block4"><span class="glyphicon glyphicon-star"></span></button>
+							<button type="button" class="btn btn-primary" id="btn_block5"><span class="glyphicon glyphicon-star"></span></button>
+						</div>
+					</div>
+				</div>
+				<div class="row form-group" id="block-2">
+					<div class="col-sm-12">
+						<div class="col-sm-6 form-inline well well-sm">
+							<span class="h4">查詢範圍 </span><input type="text" class="form-control" placeholder="" id="part_year"><span class="h4"> 年 </span>
+							<button class="btn btn-primary">住院 <span class="badge" id="part_ipd">22</span></button>
+							<button class="btn btn-primary">門急 <span class="badge" id="part_opd">22</span></button>
+							<button class="btn btn-primary">手術 <span class="badge" id="part_op">22</span></button>
+							<button class="btn btn-primary">影像 <span class="badge" id="part_img">22</span></button>
+							<button class="btn btn-primary">檢驗 <span class="badge" id="part_exam">22</span></button>
+						</div>
+						<div class="col-sm-6 form-inline well well-sm ">
+							<span class="h4 text-justify"> 全部</span>
+							<button class="btn btn-primary">住院 <span class="badge" id="all_ipd">100</span></button>
+							<button class="btn btn-primary">門急 <span class="badge" id="all_opd">100</span></button>
+							<button class="btn btn-primary">手術 <span class="badge" id="all_op">100</span></button>
+							<button class="btn btn-primary">影像 <span class="badge" id="all_img">100</span></button>
+							<button class="btn btn-primary">檢驗 <span class="badge" id="all_exam">100</span></button>
+						</div>
+					</div>
+				</div>
+				<div class="row" id="block-3">
+					<div class="col-sm-12">
+						<div class="panel-group" id="timeLine"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
