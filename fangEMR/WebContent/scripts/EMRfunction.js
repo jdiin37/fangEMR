@@ -1,12 +1,15 @@
 function getPatInfo(paraMethod) {
 
 	$.ajax({
-		method: "POST",
-		url : 'http://172.16.2.189:8080/SHSTimaServices/servlets/ServletAgent',
-		data: {
-			serviceName: "PatinpService",
-			parameters: '{"idNo":"ORCL","sessionID":1806,"method":' + "getPatinpListInp" + '}'
-		},
+//		method: "POST",
+		type: "GET",
+		//url : 'http://172.16.2.189:8080/SHSTimaServices/servlets/ServletAgent',
+		url: 'pat.txt',
+		async: false,
+//		data: {
+//			serviceName: "PatinpService",
+//			parameters: '{"idNo":"ORCL","sessionID":1806,"method":' + "getPatinpListInp" + '}'
+//		},
 		dataType: "json"
 	})
 		.done(function (data) {
@@ -26,7 +29,6 @@ function getPatInfo(paraMethod) {
 				});	
 			}						
 		});
-
 }
 
 var timesCnt = 0;

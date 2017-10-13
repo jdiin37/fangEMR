@@ -59,6 +59,7 @@
 	text-align: left;
 	vertical-align: middle;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -76,12 +77,11 @@
 	<!--LoadingModal-->
 	<div class="modal fade" tabindex="-1" role="dialog" id="LoadingModal">
 		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">				
+			<div class="modal-content">
 				<div class="modal-body" id="alertMsg">
 					<h4 class="modal-title">Loading...</h4>
 					<div class="progress">
-						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-							</div>
+						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 					</div>
 				</div>
 			</div>
@@ -105,9 +105,9 @@
 			</div>
 			<div class="panel-body">
 				<div class="row form-group" id="block-1">
-					<div class="col-sm-12">
-						<button type="button" class="btn btn-primary" id="btn_block0"><span class="glyphicon glyphicon-user"></span></button> <span class="h4 bg-warning"
-							id="block-1-patInfo"></span>
+					<div class="col-sm-12 form-inline">
+						<button type="button" class="btn btn-primary" id="btn_block0"><span class="glyphicon glyphicon-user"></span></button> 
+						<mark class="h4" id="block-1-patInfo"></mark>
 						<div class="pull-right">
 							<button type="button" class="btn btn-primary" id="btn_block1"><span class="glyphicon glyphicon-star"></span></button>
 							<button type="button" class="btn btn-primary" id="btn_block2"><span class="glyphicon glyphicon-star"></span></button>
@@ -120,7 +120,7 @@
 				<div class="row form-group" id="block-2">
 					<div class="col-sm-12">
 						<div class="col-sm-6 form-inline well well-sm">
-							<span class="h4">查詢範圍 </span><input type="text" class="form-control" placeholder="" id="part_year"><span class="h4"> 年 </span>
+							<span class="h4">查詢範圍 </span><input type="text" class="form-control" style="max-width: 50px;" placeholder="" id="part_year"><span class="h4"> 年 </span>
 							<button class="btn btn-primary">住院 <span class="badge" id="part_ipd">22</span></button>
 							<button class="btn btn-primary">門急 <span class="badge" id="part_opd">22</span></button>
 							<button class="btn btn-primary">手術 <span class="badge" id="part_op">22</span></button>
